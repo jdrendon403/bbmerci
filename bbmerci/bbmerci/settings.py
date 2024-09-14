@@ -41,9 +41,11 @@ INSTALLED_APPS = [
     #Third party apps
     "crispy_forms",
     "crispy_tailwind",
+    "mathfilters",
     # User Apps
     "products",
     "users",
+    "orders",
 ]
 
 MIDDLEWARE = [

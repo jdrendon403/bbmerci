@@ -47,6 +47,18 @@
               <div class="sm:flex sm:gap-4">
                 {% if user.is_authenticated %}
                     {{user.first_name}}
+                    <a
+                      class="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block"
+                      href="{% url "profile" %}"
+                    >
+                    Perfil
+                    </a>
+                    <a
+                      class="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block"
+                      href="{% url "my_order" %}"
+                    >
+                    Mi Pedido
+                    </a>
                     <form action="{% url "logout" %}" method="post">
                         {% csrf_token %}
                         <button
@@ -56,6 +68,7 @@
                         Logout
                         </button>
                     </form>
+                    
                 {% else %}
                     <a
                     class="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
@@ -66,7 +79,7 @@
         
                     <a
                     class="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block"
-                    href="url"
+                    href="{% url "register" %}"
                     >
                     Registro
                     </a>

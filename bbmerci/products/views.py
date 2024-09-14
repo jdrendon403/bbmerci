@@ -8,9 +8,10 @@ from .models import Product
 class ProductsFormView(generic.FormView):
     template_name= "add_product.html"
     form_class = ProductForm
-    success_url= reverse_lazy("add_product")
+    success_url= reverse_lazy("list_product")
 
     def form_valid(self, form):
+        print("validando")
         form.save()
         return super().form_valid(form)
     
