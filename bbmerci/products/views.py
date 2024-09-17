@@ -1,8 +1,12 @@
 from django.views import generic
 from django.urls import reverse_lazy
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
 from .forms import ProductForm
 from .models import Product
+from .serializers import ProductSerializer
 
 
 class ProductsFormView(generic.FormView):
@@ -19,4 +23,12 @@ class ProductsListView(generic.ListView):
     model=Product
     template_name="list_product.html"
     context_object_name="products"
-    
+
+class ProductListApiView(APIView):
+    authentication_classes = [] #[SessionAuthentication, BasicAuthentication]
+    permission_classes = [] #[IsAuthenticated]
+
+    def get(self, request):
+        products=Product.objects.all()
+        serializer=ProductSerializer(products, many=True)
+        return Response(serializer.data)

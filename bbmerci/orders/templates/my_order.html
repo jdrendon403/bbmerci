@@ -40,20 +40,11 @@
       
           <p class="mt-1.5 text-sm text-gray-700">${{product.product.price |mul:product.quantity}}</p>
           <p class="mt-1.5 text-sm text-gray-700">cantidad: {{product.quantity}}</p>
-            
-          {% comment "for later" %}
-          <form class="mt-4">
-            <button
-              class="block w-full rounded bg-yellow-400 p-4 text-sm font-medium transition hover:scale-105"
-            >
-              Add to Cart
-            </button>
-          </form>
-          {% endcomment %}
-          
         </div>
       </a>            
     </il>
+    {%empty%}
+    <p class="mt-1.5 text-sm text-gray-700">No hay productos en esta orden</p>
     {% endfor %}
 </ul>
 {% endblock content %}
